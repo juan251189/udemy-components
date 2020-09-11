@@ -3,12 +3,16 @@
   <div class="jumbotron ">
     <h1>User Component</h1>
     <p>This is the parent component</p>
+        {{name}}
       <button @click="changeName">Change name</button>
+
 
     <div class="row" style="margin:20px;">
 
       <div class="col-sm-6 justify-content-center align-self-center">
-        <app-user-details :name="name"></app-user-details>
+        <app-user-details :name="name"
+         @nameWasReset="resetName"
+         :resetNamefn="resetNameCallBack"></app-user-details>
 
 
       </div>
@@ -38,7 +42,15 @@ export default {
   methods:{
     changeName:function(){
       this.name="david";
+    },
+    resetName(v){
+      this.name=v;
+    },
+
+    resetNameCallBack(){
+      this.name='Max';
     }
+
   }
 }
 </script>

@@ -2,17 +2,33 @@
   <div id="Udetails" >
 
     <h3 >User Details</h3>
-    <p>{{name}}</p>
+    <p>{{switchName()}}</p>
+    <button @click="resetName">ResetName</button>
+    <button @click="resetNamefn()"> Reset Name Call Back</button>
   </div>
 </template>
 
 <script>
   export default{
     name:'user-details',
-    props:['name'],
+    props:{
+      name:String,
+      resetNamefn:Function
+    },
     data(){
       return{
 
+      }
+    },
+    methods: {
+      switchName() {
+        return this.name.split("").reverse().join("");
+
+      },
+      resetName(){
+
+        var newName= 'Max';
+        this.$emit('nameWasReset',newName);
       }
     }
   }
