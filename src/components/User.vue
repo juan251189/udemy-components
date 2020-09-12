@@ -12,12 +12,15 @@
       <div class="col-sm-6 justify-content-center align-self-center">
         <app-user-details :name="name"
          @nameWasReset="resetName"
-         :resetNamefn="resetNameCallBack"></app-user-details>
+         :resetNamefn="resetNameCallBack"
+         :age="age"></app-user-details>
 
 
       </div>
       <div class="col-sm-6">
-        <app-user-edit></app-user-edit>
+        <app-user-edit :age="age"
+          @ageWasChanged="changeAge"
+        ></app-user-edit>
       </div>
     </div>
   </div>
@@ -36,7 +39,8 @@ export default {
   },
   data() {
     return {
-      name:'Juan'
+      name:'Juan',
+      age:30
     }
   },
   methods:{
@@ -49,6 +53,9 @@ export default {
 
     resetNameCallBack(){
       this.name='Max';
+    },
+    changeAge:function(p){
+      this.age=p;
     }
 
   }

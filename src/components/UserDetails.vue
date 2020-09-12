@@ -5,6 +5,7 @@
     <p>{{switchName()}}</p>
     <button @click="resetName">ResetName</button>
     <button @click="resetNamefn()"> Reset Name Call Back</button>
+    {{age}}
   </div>
 </template>
 
@@ -13,7 +14,8 @@
     name:'user-details',
     props:{
       name:String,
-      resetNamefn:Function
+      resetNamefn:Function,
+      age:Number
     },
     data(){
       return{

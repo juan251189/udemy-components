@@ -1,11 +1,30 @@
 <template>
   <div id="UserEdit">
-    Edit me
+    <button @click="editAge">Edit Age</button>    {{age}}
+    <br><hr>
+    <span>this will only change age in the component edit age</span>
+<div>
+<button @click="editAgeChildComponent">Edit Age in user details too</button>
+{{age}}
+</div>
   </div>
 </template>
 <script>
 export default {
   name: "user-edit",
+  props:{
+    age: Number
+  },
+  methods:{
+    editAge:function(){
+      this.age="31";
+
+    },
+    editAgeChildComponent:function(){
+      this.age="31";
+      this.$emit('ageWasChanged',this.age)
+    }
+  }
 
 }
 </script>
