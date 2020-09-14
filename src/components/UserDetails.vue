@@ -3,13 +3,19 @@
 
     <h3 >User Details</h3>
     <p>{{switchName()}}</p>
+    {{age}}
     <button @click="resetName">ResetName</button>
     <button @click="resetNamefn()"> Reset Name Call Back</button>
-    {{age}}
+
+
+
+
+
   </div>
 </template>
 
 <script>
+import { eventBus } from "../main";
   export default{
     name:'user-details',
     props:{
@@ -32,7 +38,14 @@
         var newName= 'Max';
         this.$emit('nameWasReset',newName);
       }
+    },
+    created() {
+      //do something after creating vue instance
+      eventBus.$on('ageWasEdited',(data) =>{
+        this.age=data;
+      })
     }
+
   }
 </script>
 

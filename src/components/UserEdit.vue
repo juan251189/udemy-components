@@ -4,12 +4,14 @@
     <br><hr>
     <span>this will only change age in the component edit age</span>
 <div>
-<button @click="editAgeChildComponent">Edit Age in user details too</button>
+<button @click="editAgeChildComponent">EditAge user details too</button>
+<button @click="editAgeBus">clickMe</button>
 {{age}}
 </div>
   </div>
 </template>
 <script>
+import { eventBus } from "../main";
 export default {
   name: "user-edit",
   props:{
@@ -22,8 +24,13 @@ export default {
     },
     editAgeChildComponent:function(){
       this.age="31";
-      this.$emit('ageWasChanged',this.age)
-    }
+     this.$emit('ageWasEdited',this.age)
+    eventBus.$emit('ageWasEdited',this.age);
+  },
+editAgeBus(){
+  this.age=31;
+  eventBus.$emit('ageWasEdited',this.age);
+}
   }
 
 }

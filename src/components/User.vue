@@ -5,7 +5,7 @@
     <p>This is the parent component</p>
         {{name}}
       <button @click="changeName">Change name</button>
-
+{{age}}
 
     <div class="row" style="margin:20px;">
 
@@ -19,8 +19,15 @@
       </div>
       <div class="col-sm-6">
         <app-user-edit :age="age"
-          @ageWasChanged="changeAge"
+
         ></app-user-edit>
+
+        <h1>Learning about Slot</h1>
+        <app-slots>
+          <div class="col-sm-8" slot="title"><h1>{{name}}</h1></div>
+          <div class="col-sm-8" slot="content"><p>{{age}}</p></div>
+        </app-slots>
+
       </div>
     </div>
   </div>
@@ -29,13 +36,15 @@
 
 <script>
 import UserDetails from './UserDetails.vue';
-import UserEdit from './UserEdit.vue'
+import UserEdit from './UserEdit.vue';
+import AppSlot from  './slots.vue';
 
 export default {
   name: "user",
   components: {
     appUserDetails: UserDetails,
-    appUserEdit: UserEdit
+    appUserEdit: UserEdit,
+    appSlots:AppSlot
   },
   data() {
     return {
